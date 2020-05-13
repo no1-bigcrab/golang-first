@@ -2,7 +2,9 @@
 // of dynamic values and types
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Creating an interface
 func myInterface(a interface{}) {
