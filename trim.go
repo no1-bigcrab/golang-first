@@ -41,6 +41,10 @@ func main() {
 	// Using TrimPrefix() function
 	res9 := strings.TrimPrefix(str1, "Welcome")
 	res10 := strings.TrimPrefix(str2, "Hello")
+	//uppercase = totitle
+	res11 := strings.ToUpper(str2)
+	res12 := strings.ToTitle(str2)
+	res13 := strings.ToLower(str2)
 
 	// Displaying the results
 	fmt.Println("\nStrings after trimming:")
@@ -54,4 +58,7 @@ func main() {
 	fmt.Println("Result 8:", res8)
 	fmt.Println("Result 7: ", res9)
 	fmt.Println("Result 8:", res10)
+	fmt.Println("Result 11: ", res11)
+	fmt.Println("Result 11:", res12)
+	fmt.Println("Result 11:", res13)
 }
