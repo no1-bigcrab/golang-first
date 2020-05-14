@@ -39,12 +39,22 @@ func getBooks(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 
-	json.NewDecoder(w).EnCode(books)
+	json.NewEncoder(w).Encode(books)
 }
 
 //get single book by id
 func getBook(w http.ResponseWriter, r *http.Request) {
-
+	w.Header().Set("Content-Type", "application/json")
+	params := mux.Vars(r);// get params send by url
+	// 
+	// loop
+	for _, item:= range books {
+		if item.ID == params["id"]  {
+			json.NewEncoder(w).Encode(item);
+			return
+		}
+	}
+	json.NewEncoder(w).Encode(&Book{});
 }
 
 //create book in the table
@@ -67,12 +77,12 @@ func handleRequests() {
 	myRoute := mux.NewRouter().StrictSlash(true)
 
 	//Mock data
-	books = append(books, Book{
+	books = append( books, Book{
 		ID:    "1",
 		Isbn:   "44873",
 		Title: "Tiếng gọi nơi hoang dã",
 		Author: &Author{
-			FistName: "John Biden",
+			FirstName: "John Biden",
 			LastName: "Bidonn",
 			Age:      45,
 			Address:  "46 Khâm Thiên",
@@ -80,17 +90,18 @@ func handleRequests() {
 			Email:    "banhbao01@mail.com",
 		},
 	})
-	books = append(books, Book{
+	books = append( books, Book {
 		ID:    "2",
 		Isbn:   "44321",
 		Title: "1977 Vlogs",
-		Author: &Author{FistName: "Chí Biden",
+		Author: &Author{
+			FirstName: "Chí Biden",
 			LastName: "Phèo",
 			Age:      40,
 			Address:  "Làng Vũ Đại",
 			Phone:    "0937275762",
-			Email:    "chidepzai01@mail.com"
-		}
+			Email:    "chidepzai01@mail.com",
+		},
 	})
 
 	//endpoint router
