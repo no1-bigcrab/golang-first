@@ -38,19 +38,25 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
+	"log"
 
-	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 func main() {
 	fmt.Println("Hello world::\n")
-	db, err := gorm.Open("postgres", "host=localhost port=5432 user=macosx dbname=testdb password=123")
+
+	db, err := sql.Open("postgres", "user=macosx password=123 dbname=testdb sslmode=disable")
+	if err != nil {
+		log.Fatal(err)
+	} else {
+		fmt.Println("Hello Success")
+	}
 	defer db.Close()
 	if err != nil {
-		fmt.Println("Fail")
-	} else {
-		fmt.Println("Success")
+		// handle this error better than this
+		panic(err)
 	}
 }
