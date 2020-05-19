@@ -1,9 +1,7 @@
 package main
 
-import (
-	"gitHubDatabase/database"
-)
+import "github.com/serve/api"
 
 func main() {
-	database.Connect()
+	api.Run()
 }
