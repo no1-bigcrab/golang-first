@@ -40,16 +40,16 @@ func (u *User) BeforeSave() error {
 
 func (u *User) Prepare() {
 	u.ID = 0
-	u.Nickname = html.EscapeString(strings.TrimSpace(u.Nickname))
+	u.NickName = html.EscapeString(strings.TrimSpace(u.NickName))
 	u.Email = html.EscapeString(strings.TrimSpace(u.Email))
-	u.CreatedAt = time.Now()
-	u.UpdatedAt = time.Now()
+	u.Created_at = time.Now()
+	u.Updated_at = time.Now()
 }
 
 func (u *User) Validate(action string) error {
 	switch strings.ToLower(action) {
 	case "update":
-		if u.Nickname == "" {
+		if u.NickName == "" {
 			return errors.New("Required Nickname")
 		}
 		if u.Password == "" {
@@ -76,7 +76,7 @@ func (u *User) Validate(action string) error {
 		return nil
 
 	default:
-		if u.Nickname == "" {
+		if u.NickName == "" {
 			return errors.New("Required Nickname")
 		}
 		if u.Password == "" {
@@ -134,7 +134,7 @@ func (u *User) UpdateAUser(db *gorm.DB, uid uint32) (*User, error) {
 	db = db.Debug().Model(&User{}).Where("id = ?", uid).Take(&User{}).UpdateColumns(
 		map[string]interface{}{
 			"password":  u.Password,
-			"nickname":  u.Nickname,
+			"nickname":  u.NickName,
 			"email":     u.Email,
 			"update_at": time.Now(),
 		},

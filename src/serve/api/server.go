@@ -6,8 +6,8 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
-	"github.com/serve/api/controllers"
-	"github.com/serve/api/seed"
+	"github.com/no1-bigcrab/golang-first/api/controllers"
+	"github.com/no1-bigcrab/golang-first/api/seed"
 )
 
 var server = controllers.Server{}
@@ -26,6 +26,6 @@ func Run() {
 
 	seed.Load(server.DB)
 
-	server.Run(":8080")
+	server.Run(":9000")
 
 }

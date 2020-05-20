@@ -4,8 +4,8 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/serve/api/auth"
-	"github.com/serve/api/responses"
+	"github.com/no1-bigcrab/golang-first/api/auth"
+	"github.com/no1-bigcrab/golang-first/api/responses"
 )
 
 func SetMiddlewareJSON(next http.HandlerFunc) http.HandlerFunc {

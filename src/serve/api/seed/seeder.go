@@ -4,17 +4,17 @@ import (
 	"log"
 
 	"github.com/jinzhu/gorm"
-	"github.com/serve/api/models"
+	"github.com/no1-bigcrab/golang-first/api/models"
 )
 
 var users = []models.User{
 	models.User{
-		Nickname: "Steven victor",
+		NickName: "Steven victor",
 		Email:    "steven@gmail.com",
 		Password: "password",
 	},
 	models.User{
-		Nickname: "Martin Luther",
+		NickName: "Martin Luther",
 		Email:    "luther@gmail.com",
 		Password: "password",
 	},
