@@ -1,3 +1,4 @@
-src
 pkg
 bin
+src/github.com
+src/serve/vendor
